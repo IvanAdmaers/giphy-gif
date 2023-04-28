@@ -16,8 +16,8 @@ yarn add giphy-gif
 ```js
 import { GiphyGif } from 'giphy-gif';
 
-(async () => {
-  const gif = await GiphyGif.getDirectLink('https://giphy.com/gifs/life-gets-down-olAik8MhYOB9K');
+(() => {
+  const gif = GiphyGif.getDirectLink('https://giphy.com/gifs/life-gets-down-olAik8MhYOB9K');
 
   console.info(gif);
 })();

@@ -1,38 +1,17 @@
-import axios from 'axios';
-
 export class GiphyGif {
   private static getLink(id: string) {
     return `https://i.giphy.com/media/${id}/giphy.gif`;
   }
 
-  public static async getDirectLink(url: string) {
-    try {
-      /* Gif page. Like https://giphy.com/gifs/life-gets-down-olAik8MhYOB9K */
-      const gifRegEx = /^https:\/\/giphy\.com\/gifs\/[a-zA-Z0-9_-]+$/i;
+  public static getDirectLink(url: string) {
+    /* Gif page. Like https://giphy.com/gifs/life-gets-down-olAik8MhYOB9K */
+    const gifRegEx = /^https:\/\/giphy\.com\/gifs\/[a-zA-Z0-9_-]+$/i;
 
-      if (url.match(gifRegEx) !== null) {
-        const regEx =
-          /<meta\s+name="twitter:player"\s+content="https:\/\/giphy.com\/embed\/(\w+)/;
+    if (url.match(gifRegEx) !== null) {
+      const splittedUrl = url.split('-');
+      const id = splittedUrl[splittedUrl.length - 1];
 
-        const { data: page } = await axios.get<string>(url, {
-          headers: {
-            'User-Agent':
-              'Mozilla/5.0 (Macintosh; Intel Mac OS X 7_6_0; en-US) AppleWebKit/536.6 (KHTML, like Gecko) Chrome/55.0.1567.237 Safari/534',
-          },
-        });
-
-        const id = page.match(regEx)?.[1];
-
-        if (id === undefined) {
-          return null;
-        }
-
-        return this.getLink(id);
-      }
-    } catch (error) {
-      console.error(error);
-
-      return null;
+      return this.getLink(id);
     }
     /* End of gif page */
 
