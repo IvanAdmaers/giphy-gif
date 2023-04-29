@@ -3,6 +3,7 @@ import { GiphyGif } from '.';
 describe('GiphyGif', () => {
   describe('GiphyGif.getDirectLink', () => {
     const expectedUrl = 'https://i.giphy.com/media/olAik8MhYOB9K/giphy.gif';
+    const expectedUrl2 = 'https://i.giphy.com/media/3NtY188QaxDdC/giphy.gif';
 
     it('should throw an error when incorrect url', () => {
       expect(() =>
@@ -18,6 +19,22 @@ describe('GiphyGif', () => {
       );
 
       expect(result).toBe(expectedUrl);
+    });
+
+    it('should return a correct result for a gif from page with file extension', () => {
+      const result = GiphyGif.getDirectLink(
+        'https://giphy.com/gifs/life-gets-down-olAik8MhYOB9K/giphy.gif'
+      );
+
+      expect(result).toBe(expectedUrl);
+    });
+
+    it('should return a correct result for a gif from page with no dashes in url', () => {
+      const result = GiphyGif.getDirectLink(
+        'https://giphy.com/gifs/3NtY188QaxDdC'
+      );
+
+      expect(result).toBe(expectedUrl2);
     });
 
     it('should return a correct result for an url for embedding', () => {

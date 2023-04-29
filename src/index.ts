@@ -5,11 +5,13 @@ export class GiphyGif {
 
   public static getDirectLink(url: string) {
     /* Gif page. Like https://giphy.com/gifs/life-gets-down-olAik8MhYOB9K */
-    const gifRegEx = /^https:\/\/giphy\.com\/gifs\/[a-zA-Z0-9_-]+$/i;
+    const gifRegEx =
+      /^https?:\/\/giphy\.com\/(?:gifs\/(?:.*-)?([a-zA-Z0-9_-]+)(?:\/|$)|gifs\/([a-zA-Z0-9]+)(?:\/|$))/i;
 
-    if (url.match(gifRegEx) !== null) {
-      const splittedUrl = url.split('-');
-      const id = splittedUrl[splittedUrl.length - 1];
+    const gifRegExMatch = url.match(gifRegEx);
+
+    if (gifRegExMatch !== null) {
+      const id = gifRegExMatch[1];
 
       return this.getLink(id);
     }
