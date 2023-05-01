@@ -54,14 +54,14 @@ describe('GiphyGif', () => {
     });
   });
 
-  describe('GiphyGif.isGiphyDirectImage', () => {
+  describe('GiphyGif.isDirectImage', () => {
     it('should return true for a Giphy image', () => {
-      expect(GiphyGif.isGiphyDirectImage(expectedUrl)).toBe(true);
+      expect(GiphyGif.isDirectImage(expectedUrl)).toBe(true);
     });
 
     it('should return false for a non Giphy image', () => {
       expect(
-        GiphyGif.isGiphyDirectImage('https://google.com/?q=whatever/giphy.gif')
+        GiphyGif.isDirectImage('https://google.com/?q=whatever/giphy.gif')
       ).toBe(false);
     });
   });

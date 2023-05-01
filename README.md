@@ -22,13 +22,13 @@ console.info(gif);
 
 /* Checks */
 
-const isGiphyGif1 = GiphyGif.isGiphyDirectImage('https://giphy.com/gifs/life-gets-down-olAik8MhYOB9K');
+const isDirectImage1 = GiphyGif.isDirectImage('https://giphy.com/gifs/life-gets-down-olAik8MhYOB9K');
 
-console.info(isGiphyGif1); // false
+console.info(isDirectImage1); // false
 
-const isGiphyGif2 = GiphyGif.isGiphyDirectImage(gif);
+const isDirectImage2 = GiphyGif.isDirectImage(gif);
 
-console.info(isGiphyGif2); // true
+console.info(isDirectImage2); // true
 
 ```
 
