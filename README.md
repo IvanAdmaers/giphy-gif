@@ -16,11 +16,19 @@ yarn add giphy-gif
 ```js
 import { GiphyGif } from 'giphy-gif';
 
-(() => {
-  const gif = GiphyGif.getDirectLink('https://giphy.com/gifs/life-gets-down-olAik8MhYOB9K');
+const gif = GiphyGif.getDirectLink('https://giphy.com/gifs/life-gets-down-olAik8MhYOB9K');
 
-  console.info(gif);
-})();
+console.info(gif);
+
+/* Checks */
+
+const isGiphyGif1 = GiphyGif.isGiphyDirectImage('https://giphy.com/gifs/life-gets-down-olAik8MhYOB9K');
+
+console.info(isGiphyGif1); // false
+
+const isGiphyGif2 = GiphyGif.isGiphyDirectImage(gif);
+
+console.info(isGiphyGif2); // true
 
 ```
 

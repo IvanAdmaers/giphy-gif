@@ -42,4 +42,11 @@ export class GiphyGif {
 
     throw new URIError('Incorrect uri');
   }
+
+  public static isGiphyDirectImage(url: string) {
+    const regEx =
+      /^https:\/\/i\.giphy\.com\/media\/[a-zA-Z0-9_-]+\/giphy\.gif$/;
+
+    return regEx.test(url);
+  }
 }

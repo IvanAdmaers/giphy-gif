@@ -1,10 +1,10 @@
 import { GiphyGif } from '.';
 
 describe('GiphyGif', () => {
-  describe('GiphyGif.getDirectLink', () => {
-    const expectedUrl = 'https://i.giphy.com/media/olAik8MhYOB9K/giphy.gif';
-    const expectedUrl2 = 'https://i.giphy.com/media/3NtY188QaxDdC/giphy.gif';
+  const expectedUrl = 'https://i.giphy.com/media/olAik8MhYOB9K/giphy.gif';
+  const expectedUrl2 = 'https://i.giphy.com/media/3NtY188QaxDdC/giphy.gif';
 
+  describe('GiphyGif.getDirectLink', () => {
     it('should throw an error when incorrect url', () => {
       expect(() =>
         GiphyGif.getDirectLink(
@@ -51,6 +51,18 @@ describe('GiphyGif', () => {
       );
 
       expect(result).toBe(expectedUrl);
+    });
+  });
+
+  describe('GiphyGif.isGiphyDirectImage', () => {
+    it('should return true for a Giphy image', () => {
+      expect(GiphyGif.isGiphyDirectImage(expectedUrl)).toBe(true);
+    });
+
+    it('should return false for a non Giphy image', () => {
+      expect(
+        GiphyGif.isGiphyDirectImage('https://google.com/?q=whatever/giphy.gif')
+      ).toBe(false);
     });
   });
 });
